@@ -8,7 +8,7 @@ import { Badge } from "../ui/badge";
 import { DataItem } from "./DataItem";
 
 interface SecurityCardProps {
-  data: Pick<IPStackResponse, 'security'>;
+  data: IPStackResponse;
 }
 
 const SecurityFlag: React.FC<{ label: string; value: boolean }> = ({ label, value }) => (
@@ -29,17 +29,25 @@ export const SecurityCard: React.FC<SecurityCardProps> = ({ data }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <DataItem label="Nivel de Amenaza">
-          <Badge className={getThreatLevelColor(security.threat_level)}>
-            {security.threat_level.toUpperCase()}
-          </Badge>
-        </DataItem>
-        <div className="grid grid-cols-2 gap-2 pt-2">
-          <SecurityFlag label="Proxy" value={security.is_proxy} />
-          <SecurityFlag label="Tor" value={security.is_tor} />
-          <SecurityFlag label="Crawler" value={security.is_crawler} />
-          <SecurityFlag label="Hosting" value={security.hosting_facility} />
-        </div>
+        {data.security ? (
+          <>
+            <DataItem label="Nivel de Amenaza">
+              <Badge className={getThreatLevelColor(data.security.threat_level)}>
+                {data.security.threat_level.toUpperCase()}
+              </Badge>
+            </DataItem>
+            <div className="grid grid-cols-2 gap-2 pt-2">
+              <SecurityFlag label="Proxy" value={data.security.is_proxy} />
+              <SecurityFlag label="Tor" value={data.security.is_tor} />
+              <SecurityFlag label="Crawler" value={data.security.is_crawler} />
+              <SecurityFlag label="Hosting" value={data.security.hosting_facility} />
+            </div>
+          </>
+        ) : (
+          <p className="text-sm text-gray-500">
+            Información de seguridad no disponible
+          </p>
+        )}
       </CardContent>
     </Card>
   );

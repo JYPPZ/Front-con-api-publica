@@ -1,8 +1,8 @@
 import React from "react";
-import { MapPin } from "lucide-react";
-import type { IPStackResponse } from "../../types/ipstack";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import type { IPStackResponse } from "../../types/ipstack"; // Ajusta la ruta
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { DataItem } from "./DataItem";
+import { MapPin } from "lucide-react";
 
 interface LocationCardProps {
   data: IPStackResponse;
@@ -25,11 +25,15 @@ export const LocationCard: React.FC<LocationCardProps> = ({ data }) => {
             <p className="text-sm text-gray-500">{data.continent_name}</p>
           </div>
         </div>
-        <DataItem label="Región"><p>{data.region_name} ({data.region_code})</p></DataItem>
+        <DataItem label="Región">
+          <p>{data.region_name} ({data.region_code})</p>
+        </DataItem>
         <DataItem label="Ciudad"><p>{data.city}</p></DataItem>
         <DataItem label="Código Postal"><p>{data.zip}</p></DataItem>
         <DataItem label="Coordenadas">
-          <p className="font-mono">{data.latitude.toFixed(4)}, {data.longitude.toFixed(4)}</p>
+          <p className="text-sm font-mono">
+            {data.latitude.toFixed(4)}, {data.longitude.toFixed(4)}
+          </p>
         </DataItem>
       </CardContent>
     </Card>

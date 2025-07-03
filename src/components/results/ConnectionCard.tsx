@@ -7,7 +7,7 @@ import { Badge } from "../ui/badge";
 import { DataItem } from "./DataItem";
 
 interface ConnectionCardProps {
-  data: Pick<IPStackResponse, 'connection'>;
+  data: IPStackResponse;
 }
 
 export const ConnectionCard: React.FC<ConnectionCardProps> = ({ data }) => {
@@ -20,10 +20,28 @@ export const ConnectionCard: React.FC<ConnectionCardProps> = ({ data }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <DataItem label="ISP"><p>{data.connection.isp}</p></DataItem>
-        <DataItem label="Operador"><p className="capitalize">{data.connection.carrier}</p></DataItem>
-        <DataItem label="ASN"><Badge>{data.connection.asn}</Badge></DataItem>
-        <DataItem label="Dominio"><p className="font-mono">{data.connection.sld}.{data.connection.tld}</p></DataItem>
+        {data.connection ? (
+          <>
+            <DataItem label="ISP">
+              <p>{data.connection.isp}</p>
+            </DataItem>
+            <DataItem label="Operador">
+              <p className="capitalize">{data.connection.carrier}</p>
+            </DataItem>
+            <DataItem label="ASN">
+              <Badge >{data.connection.asn}</Badge>
+            </DataItem>
+            <DataItem label="Dominio">
+              <p className="font-mono">
+                {data.connection.sld}.{data.connection.tld}
+              </p>
+            </DataItem>
+          </>
+        ) : (
+          <p className="text-sm text-gray-500">
+            Información de conexión no disponible
+          </p>
+        )}
       </CardContent>
     </Card>
   );

@@ -19,20 +19,26 @@ export const TimeZoneCard: React.FC<TimeZoneCardProps> = ({ data }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <DataItem label="ID Zona Horaria">
-          <p>{data.time_zone.id}</p>
-        </DataItem>
-        <DataItem label="Hora Local">
-          <p className="font-mono">{new Date(data.time_zone.current_time).toLocaleString()}</p>
-        </DataItem>
-        <DataItem label="Código">
-          <Badge >{data.time_zone.code}</Badge>
-        </DataItem>
-        <DataItem label="Horario de Verano">
-          <Badge >
-            {data.time_zone.is_daylight_saving ? "Activo" : "Inactivo"}
-          </Badge>
-        </DataItem>
+        {data.time_zone ? (
+          <>
+            <DataItem label="ID Zona Horaria">
+              <p>{data.time_zone.id}</p>
+            </DataItem>
+            <DataItem label="Hora Local">
+              <p className="font-mono">{new Date(data.time_zone.current_time).toLocaleString()}</p>
+            </DataItem>
+            <DataItem label="Código">
+              <Badge>{data.time_zone.code}</Badge>
+            </DataItem>
+            <DataItem label="Horario de Verano">
+              <Badge>
+                {data.time_zone.is_daylight_saving ? "Activo" : "Inactivo"}
+              </Badge>
+            </DataItem>
+          </>
+        ) : (
+          <p className="text-sm text-gray-500">Información de zona horaria no disponible</p>
+        )}
       </CardContent>
     </Card>
   );

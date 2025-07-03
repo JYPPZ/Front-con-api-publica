@@ -7,7 +7,7 @@ import { Badge } from "../ui/badge";
 import { DataItem } from "./DataItem";
 
 interface CurrencyCardProps {
-  data: Pick<IPStackResponse, 'currency'>;
+  data: IPStackResponse;
 }
 
 export const CurrencyCard: React.FC<CurrencyCardProps> = ({ data }) => {
@@ -20,18 +20,26 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ data }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <DataItem label="Nombre">
-          <p className="flex items-center gap-2">
-            <span className="text-xl">{data.currency.symbol}</span>
-            <span>{data.currency.name}</span>
+        {data.currency ? (
+          <>
+            <DataItem label="Nombre">
+              <p className="flex items-center gap-2">
+                <span className="text-xl">{data.currency.symbol}</span>
+                <span>{data.currency.name}</span>
+              </p>
+            </DataItem>
+            <DataItem label="Código">
+              <Badge >{data.currency.code}</Badge>
+            </DataItem>
+            <DataItem label="Símbolo Nativo">
+              <p className="text-lg">{data.currency.symbol_native}</p>
+            </DataItem>
+          </>
+        ) : (
+          <p className="text-sm text-gray-500">
+            Información de moneda no disponible
           </p>
-        </DataItem>
-        <DataItem label="Código">
-          <Badge>{data.currency.code}</Badge>
-        </DataItem>
-        <DataItem label="Símbolo Nativo">
-          <p className="text-lg">{data.currency.symbol_native}</p>
-        </DataItem>
+        )}
       </CardContent>
     </Card>
   );
