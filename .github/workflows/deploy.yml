@@ -28,7 +28,9 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build # Ejecuta el comando de build de Vite
+        run: npm run build
+        env: 
+          VITE_IPSTACK_API_KEY: ${{ secrets.VITE_IPSTACK_API_KEY }}
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
