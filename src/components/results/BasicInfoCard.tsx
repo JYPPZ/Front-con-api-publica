@@ -4,18 +4,11 @@ import { Globe } from "lucide-react";
 import type { IPStackResponse } from "../../types/ipstack";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
+import { DataItem } from "./DataItem";
 
 interface BasicInfoCardProps {
-  data: Pick<IPStackResponse, 'ip' | 'type' | 'hostname'>;
+  data: IPStackResponse;
 }
-
-// Un componente para cada fila de datos para no repetir clases
-const DataRow: React.FC<{ label: string; value: string; isMono?: boolean }> = ({ label, value, isMono }) => (
-  <div>
-    <p className="text-sm font-medium text-gray-500">{label}</p>
-    <p className={isMono ? "font-mono" : ""}>{value}</p>
-  </div>
-);
 
 export const BasicInfoCard: React.FC<BasicInfoCardProps> = ({ data }) => {
   return (
@@ -27,12 +20,9 @@ export const BasicInfoCard: React.FC<BasicInfoCardProps> = ({ data }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <DataRow label="Dirección IP" value={data.ip} isMono />
-        <div>
-          <p className="text-sm font-medium text-gray-500">Tipo</p>
-          <Badge>{data.type.toUpperCase()}</Badge>
-        </div>
-        <DataRow label="Hostname" value={data.hostname} isMono />
+        <DataItem label="Dirección IP"><p className="font-mono">{data.ip}</p></DataItem>
+        <DataItem label="Tipo"><Badge>{data.type.toUpperCase()}</Badge></DataItem>
+        <DataItem label="Hostname"><p className="font-mono">{data.hostname}</p></DataItem>
       </CardContent>
     </Card>
   );
