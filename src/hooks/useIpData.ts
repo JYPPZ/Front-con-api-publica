@@ -28,7 +28,7 @@ export const useIpData = () => {
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Ocurrió un error desconocido"
       setError(errorMessage)
-      setData(null) 
+      setData(null)
     } finally {
       setLoading(false)
     }
@@ -40,7 +40,7 @@ export const useIpData = () => {
   const fetchCurrentUserIPData = useCallback(async () => {
     setLoading(true)
     setError(null)
-    
+
     try {
       const clientIP = await getCurrentClientIP()
       await fetchDataForIP(clientIP)
@@ -49,7 +49,7 @@ export const useIpData = () => {
       setError(errorMessage)
       setData(null)
     } finally {
-      // Nota: setLoading(false) ya es manejado por la llamada a fetchDataForIP
+      setLoading(false)
     }
   }, [fetchDataForIP])
 

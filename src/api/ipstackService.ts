@@ -1,7 +1,7 @@
 import type { IPStackResponse, IPStackErrorResponse } from "../types/ipstack"
 
 // Leer la API key de las variables de entorno de Vite
-const API_KEY = import.meta.env.IPSTACK_API_KEY
+const API_KEY = import.meta.env.VITE_IPSTACK_API_KEY
 const BASE_URL = "https://api.ipstack.com/"
 
 /**
