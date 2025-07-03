@@ -27,7 +27,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ data }) => {
           </p>
         </DataItem>
         <DataItem label="Código">
-          <Badge variant="outline">{data.currency.code}</Badge>
+          <Badge>{data.currency.code}</Badge>
         </DataItem>
         <DataItem label="Símbolo Nativo">
           <p className="text-lg">{data.currency.symbol_native}</p>

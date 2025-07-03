@@ -22,7 +22,7 @@ export const ConnectionCard: React.FC<ConnectionCardProps> = ({ data }) => {
       <CardContent className="space-y-3">
         <DataItem label="ISP"><p>{data.connection.isp}</p></DataItem>
         <DataItem label="Operador"><p className="capitalize">{data.connection.carrier}</p></DataItem>
-        <DataItem label="ASN"><Badge variant="outline">{data.connection.asn}</Badge></DataItem>
+        <DataItem label="ASN"><Badge>{data.connection.asn}</Badge></DataItem>
         <DataItem label="Dominio"><p className="font-mono">{data.connection.sld}.{data.connection.tld}</p></DataItem>
       </CardContent>
     </Card>

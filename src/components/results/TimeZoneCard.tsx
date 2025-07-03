@@ -26,10 +26,10 @@ export const TimeZoneCard: React.FC<TimeZoneCardProps> = ({ data }) => {
           <p className="font-mono">{new Date(data.time_zone.current_time).toLocaleString()}</p>
         </DataItem>
         <DataItem label="Código">
-          <Badge variant="outline">{data.time_zone.code}</Badge>
+          <Badge >{data.time_zone.code}</Badge>
         </DataItem>
         <DataItem label="Horario de Verano">
-          <Badge variant={data.time_zone.is_daylight_saving ? "default" : "secondary"}>
+          <Badge >
             {data.time_zone.is_daylight_saving ? "Activo" : "Inactivo"}
           </Badge>
         </DataItem>

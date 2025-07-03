@@ -14,7 +14,7 @@ interface SecurityCardProps {
 const SecurityFlag: React.FC<{ label: string; value: boolean }> = ({ label, value }) => (
   <div>
     <p className="text-xs font-medium text-gray-500">{label}</p>
-    <Badge variant={value ? "destructive" : "secondary"}>{value ? "Sí" : "No"}</Badge>
+    <Badge >{value ? "Sí" : "No"}</Badge>
   </div>
 );
 
