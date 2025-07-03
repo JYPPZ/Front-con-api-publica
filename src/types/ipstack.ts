@@ -61,7 +61,7 @@ interface Security {
 
 export interface IPStackResponse {
     ip: string
-    hostname: string
+    hostname?: string
     type: string
     continent_code: string
     continent_name: string
@@ -79,10 +79,10 @@ export interface IPStackResponse {
     ip_routing_type: string | null
     connection_type: string | null
     location: Location
-    time_zone: TimeZone
-    currency: Currency
-    connection: Connection
-    security: Security
+    time_zone?: TimeZone
+    currency?: Currency
+    connection?: Connection
+    security?: Security
 }
 
 export interface IPStackError {
