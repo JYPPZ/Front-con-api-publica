@@ -1,5 +1,5 @@
 import { useState, Suspense, lazy } from "react";
-import { Search, MapPin, AlertCircle, Loader2, Globe, Clock, DollarSign, Shield, Wifi } from "lucide-react";  
+import { Search, MapPin, AlertCircle, Loader2} from "lucide-react";  
 import { useIpData } from "../hooks/useIpData";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";

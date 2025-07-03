@@ -19,7 +19,7 @@ const SecurityFlag: React.FC<{ label: string; value: boolean }> = ({ label, valu
 );
 
 export const SecurityCard: React.FC<SecurityCardProps> = ({ data }) => {
-  const { security } = data;
+  //const { security } = data;
   return (
     <Card>
       <CardHeader>
